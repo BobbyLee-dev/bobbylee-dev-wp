@@ -31,11 +31,19 @@ function sapphire_features() {
 
 add_action('after_setup_theme', 'sapphire_features');
 
-function bannerBlock() {
-	wp_register_script('banner-block', get_stylesheet_directory_uri() . '/build/banner.js', array('wp-blocks', 'wp-editor'), true);
-	register_block_type('sapphirethemeblocks/banner', array(
-		'editor_script' => 'banner-block',
+
+class Sapphire_block {
+	function __construct($name) {
+		$this->name = $name;
+		add_action('init', [$this, 'on_init_register_block']);
+	}
+
+	function on_init_register_block() {
+		wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'), true);
+		register_block_type("sapphirethemeblocks/{$this->name}", array(
+		'editor_script' => $this->name,
 	));
+	}
 }
 
-add_action('init', 'bannerBlock');
+new Sapphire_block('banner');
