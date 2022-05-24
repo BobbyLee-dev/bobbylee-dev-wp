@@ -24,7 +24,6 @@ function EditComponent() {
       <div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/sapphire/images/library-hero.jpg')" }}></div>
       <div className="page-banner__content container t-center c-white">
         <InnerBlocks allowedBlocks={['core/paragraph', 'core/heading', 'core/list']} />
-				lol
       </div>
     </div>
   )
@@ -36,7 +35,6 @@ function SaveComponent() {
 			<div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/sapphire/images/library-hero.jpg')" }}></div>
 			<div className="page-banner__content container t-center c-white">
 				<InnerBlocks.Content />
-				lol
 			</div>
     </div>	
 	)
